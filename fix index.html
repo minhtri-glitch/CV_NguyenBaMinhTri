@@ -1,84 +1,300 @@
+<div class="profile-picture">
+  <img src="images/your-photo.jpg" alt="Nguyễn Bá Minh Trí">
+</div>
+.profile-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  border: 5px solid #3498db;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.profile-picture:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+/* Hiệu ứng xuất hiện */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section {
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+/* Delay cho các section */
+.section:nth-child(1) { animation-delay: 0.2s; }
+.section:nth-child(2) { animation-delay: 0.4s; }
+.section:nth-child(3) { animation-delay: 0.6s; }
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Nguyễn Bá Minh Trí</title>
+    <title>CV Nguyễn Bá Minh Trí</title>
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 20px;
             color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
+        
         .container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 1000px;
+            margin: 50px auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
         }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        .profile-picture {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+        }
+        
+        .profile-picture:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
         h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-top: 0;
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
         }
-        h2 {
-            color: #2980b9;
-            border-left: 4px solid #3498db;
-            padding-left: 10px;
-            margin-top: 25px;
+        
+        .tagline {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
         }
-        .info-section {
-            margin-bottom: 20px;
+        
+        .main-content {
+            display: flex;
+            padding: 30px;
         }
+        
+        .left-column {
+            flex: 1;
+            padding-right: 30px;
+        }
+        
+        .right-column {
+            flex: 2;
+            border-left: 1px dashed #eee;
+            padding-left: 30px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease forwards;
+            opacity: 0;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+        
         .info-item {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            display: flex;
         }
+        
         .info-label {
             font-weight: bold;
-            display: inline-block;
-            width: 150px;
+            min-width: 120px;
+            color: var(--secondary-color);
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill {
+            background: var(--primary-color);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+        
+        .skill:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .right-column {
+                border-left: none;
+                border-top: 1px dashed #eee;
+                padding-left: 0;
+                padding-top: 30px;
+                margin-top: 30px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>THÔNG TIN SINH VIÊN</h1>
+        <header>
+            <div class="profile-picture">
+                <img src="images/avatar.jpg" alt="Nguyễn Bá Minh Trí">
+            </div>
+            <h1>NGUYỄN BÁ MINH TRÍ</h1>
+            <p class="tagline">Sinh viên Mạng máy tính và Truyền thông dữ liệu</p>
+        </header>
         
-        <div class="info-section">
-            <div class="info-item">
-                <span class="info-label">MSSV:</span> 074205002512
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section">
+                    <h3 class="section-title">THÔNG TIN</h3>
+                    <div class="info-item">
+                        <span class="info-label">Ngày sinh:</span>
+                        <span>23/07/2005</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Điện thoại:</span>
+                        <span>0876543204</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email:</span>
+                        <span>minh1234567897@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Địa chỉ:</span>
+                        <span>Tân Uyên, Bình Dương</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title">KỸ NĂNG</h3>
+                    <div class="skills">
+                        <span class="skill">HTML/CSS</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">Quản trị mạng</span>
+                        <span class="skill">Giao tiếp</span>
+                        <span class="skill">Làm việc nhóm</span>
+                    </div>
+                </div>
             </div>
-            <div class="info-item">
-                <span class="info-label">Họ tên:</span> Nguyễn Bá Minh Trí
-            </div>
-            <div class="info-item">
-                <span class="info-label">Khóa học:</span> 2023
-            </div>
-            <div class="info-item">
-                <span class="info-label">Ngày sinh:</span> 23/07/2005
-            </div>
-            <div class="info-item">
-                <span class="info-label">Nơi sinh:</span> Bình Dương
+            
+            <div class="right-column">
+                <div class="section">
+                    <h3 class="section-title">HỌC VẤN</h3>
+                    <div class="info-item">
+                        <span class="info-label">2023 - Hiện tại</span>
+                        <div>
+                            <strong>Đại học [Tên trường]</strong><br>
+                            Mạng máy tính và Truyền thông dữ liệu<br>
+                            MSSV: 074205002512
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title">KINH NGHIỆM</h3>
+                    <div class="info-item">
+                        <span class="info-label">2023</span>
+                        <div>
+                            <strong>Thành viên Nhóm 11</strong><br>
+                            - Phát triển website nhóm<br>
+                            - Thiết kế giao diện người dùng
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title">DỰ ÁN</h3>
+                    <div class="info-item">
+                        <span class="info-label">Website Nhóm</span>
+                        <div>
+                            <strong>Vị trí:</strong> Front-end Developer<br>
+                            <strong>Công nghệ:</strong> HTML, CSS, JavaScript
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="info-section">
-            <div class="info-item">
-                <span class="info-label">Bậc đào tạo:</span> Đại học - chính quy
-            </div>
-            <div class="info-item">
-                <span class="info-label">Khoa:</span> Viện Công nghệ thông tin và Điện, điện tử
-            </div>
-            <div class="info-item">
-                <span class="info-label">Ngành:</span> Mạng máy tính và truyền thông dữ liệu
-            </div>
-        </div>
+        
+        <footer>
+            © 2024 - Nguyễn Bá Minh Trí - Nhóm 11
+        </footer>
     </div>
 </body>
 </html>
